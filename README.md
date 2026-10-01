@@ -17,9 +17,28 @@ Each notebook corresponds to a module in the course and includes several exercis
 
 To run the notebooks (`Module_1.ipynb`, `Module_2.ipynb`, `Module_3.ipynb`), you need to have Julia installed on your computer along with a Jupyter notebook environment.
 
-### 1. Install Julia
+### 1. Installation
 
-Download and install Julia from [julialang.org/downloads](https://julialang.org/downloads/) (tested with version 1.12).
+In case you do not yet have a running Julia installation, please follow the
+instructions below:
+
+juliaup is a Julia installer and version multiplexer, see
+[juliaup](https://github.com/JuliaLang/juliaup). We recommend you use juliaup to
+install the Julia language. 
+
+After the installation, you can check if everything works as expected by
+typing julia in your command line (terminal/powershell). You should now see
+the [Julia REPL prompt](https://docs.julialang.org/en/v1/stdlib/REPL/). 
+
+We also strongly recommend using [Visual Studio Code](https://code.visualstudio.com) as an editor. 
+
+In VS Code, you need to install the Julia and Jupyter extensions. To do so, go to the
+“Extensions" view (on the left sidebar), search for the extension, and install
+the respective extension. 
+
+We will provide support during the first lecture in case you run into
+problems. However, please make sure you have downloaded everything
+beforehand.
 
 ### 2. Clone this repository
 
@@ -27,42 +46,24 @@ Download and install Julia from [julialang.org/downloads](https://julialang.org/
 git clone https://github.com/helmihankimaa/Equilibrium_modeling_course_Berlin2026.git
 ```
 
-### 3. Install the Jupyter kernel for Julia
+### 3. Instantiate packages
 
 From a terminal in the repository folder, run the following command once:
 
 ```
-julia -e 'using Pkg; Pkg.add("IJulia")'
+julia --project=. -e 'using Pkg; Pkg.instantiate()'
 ```
 
-This registers a "Julia" kernel that Jupyter or VS Code can use to run the notebooks.
+This step instantiates packages required in this course. 
 
 ### 4. Open and run a notebook
 
-You can open the notebooks either with a Jupyter server or directly in VS Code.
+In VS Code, open this repository folder and start with one of the notebook files.
 
-**Option A: Jupyter server**
+### 5. Select the Julia kernel and run a cell
 
-From a terminal in the repository folder, run:
+Once the notebook is open, make sure the “Julia” kernel is selected. You can then run the notebook cells.
 
-```
-julia -e 'using IJulia; notebook()'
-```
+### 6. Running Julia scripts interactively
 
-This will start a Jupyter server and open the repository in your web browser. Click on one of the notebooks to start a new kernel and run it.
-
-**Option B: VS Code**
-
-Open [Visual Studio Code](https://code.visualstudio.com), install the Jupyter and Julia extensions, then open this repository folder and open one of the notebook files directly.
-
-### 5. Select the Julia kernel and run the setup cell
-
-Once a notebook is open, make sure the "Julia" kernel is selected. Then run the first code cell. It activates the project's pinned environment (`Project.toml`/`Manifest.toml`, already included in this repository) and installs the exact package versions used to build the notebooks (JuMP, HiGHS, Ipopt, SCIP, PATHSolver, Plots, DataFrames):
-
-```julia
-using Pkg
-Pkg.activate(@__DIR__)
-Pkg.instantiate()
-```
-
-This only needs to fully download packages the first time; after that it activates instantly.
+To run a Julia script interactively, open one of the scripts (.jl files), and press Shift+Enter on any line you would like to execute. 
