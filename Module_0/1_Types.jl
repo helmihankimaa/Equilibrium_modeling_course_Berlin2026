@@ -25,7 +25,7 @@ typeof(🚂)
 # Symbol is a data type used in the background of julia, as it is more efficient than strings. 
 # It plays an important role in metaprogramming, but we will not discuss much of that. 
 # You may think of it as a "string that is immutable" for now.
-my_symbol = :lb 
+my_symbol = :lb
 typeof(my_symbol)
 
 # Converting is also possible
