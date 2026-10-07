@@ -91,7 +91,18 @@ value(theta)
 value.(x)
 value.(u)
 
-price = Dict(n => 40 + 4 * value(u["c", n]) for n in N)
+mu = Dict(
+    n => sum(
+        shadow_price(theta_con[k]) * q[n, k]
+        for k in K
+    )
+    for n in N
+)
+
+price = Dict(
+    n => shadow_price(balance_con[n]) / mu[n]
+    for n in N
+)
 
 profit_T = Dict(
     n =>
